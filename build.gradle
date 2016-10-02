@@ -1,0 +1,44 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'ng-boot'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+	compile('org.springframework.boot:spring-boot-devtools')
+	compile('org.projectlombok:lombok')
+	compile('org.springframework.boot:spring-boot-starter-mustache')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+apply from: "$rootDir/gradle/client.gradle"
+
+build.dependsOn 'npm run build'
+build.shouldRunAfter 'npm run build'

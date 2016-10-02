@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ng15app
+  data:
+    rest:
+      base-path: /api
+    mongodb:
+      port: 0
