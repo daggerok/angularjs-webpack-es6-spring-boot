@@ -6,7 +6,7 @@ const include = [path.resolve(process.cwd(), './src')];
 
 export default {
   entry: {
-    app: './src/app.js'
+    app: './src/ng15app.js'
   },
 
   output: {

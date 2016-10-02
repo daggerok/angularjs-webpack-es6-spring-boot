@@ -4,10 +4,10 @@
   "description": "An example of application, using: AngularJS 1.5, Webpack, ES6, Spring Boot",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server -w --hot --inline --config config/webpack.dev.babel.js --content-base=../src/",
+    "start": "webpack-dev-server -w --hot --inline --config config/webpack.dev.babel.js --content-base=../src/",
     "prebuild": "rimraf -rf ../src/main/resources/static",
     "test": "webpack --config config/webpack.test.babel.js",
-    "start": "webpack -w --config config/webpack.dev.babel.js",
+    "watch": "webpack -w --config config/webpack.dev.babel.js",
     "build": "webpack --config config/webpack.prod.babel.js -p"
   },
   "babel": {
@@ -50,6 +50,7 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-route": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.1"
   },
