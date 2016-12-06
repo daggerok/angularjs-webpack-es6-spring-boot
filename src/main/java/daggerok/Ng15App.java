@@ -29,14 +29,18 @@ public class Ng15App {
 
         if (userRestRepository.count() < 1) {
 
-            Stream.of("Max@useremail.com", "Bax@useremail.com")
-                    .map(User::of).forEach(userRestRepository::save);
+            Stream.of("Max", "Bax")
+                    .map(name -> name + "@user.email.com")
+                    .map(User::of)
+                    .forEach(userRestRepository::save);
         }
 
         if (adminRestRepository.count() < 1) {
 
-            Stream.of("Max@adminemail.com", "Bax@adminemail.com")
-                    .map(Admin::of).forEach(adminRestRepository::save);
+            Stream.of("Max", "Bax")
+                    .map(name -> name + "@user.email.com")
+                    .map(Admin::of)
+                    .forEach(adminRestRepository::save);
         }
 
         return args -> Stream.concat(userRestRepository.findAll().stream(), adminRestRepository.findAll().stream())

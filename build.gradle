@@ -1,20 +1,19 @@
 buildscript {
-    repositories { mavenCentral() }
-    dependencies { classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE' }
+  repositories { mavenCentral() }
+  dependencies { classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE' }
 }
 
 plugins {
-    id 'java'
-    id 'idea'
-    id 'eclipse'
+  id 'java'
+  id 'idea'
+  id 'eclipse'
 }
 
 apply plugin: 'org.springframework.boot'
 
-
 jar {
-    baseName = 'ng-boot'
-    version = '0.0.1-SNAPSHOT'
+  baseName = 'ng-boot'
+  version = '0.0.1-SNAPSHOT'
 }
 
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
@@ -22,12 +21,12 @@ sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 repositories { mavenCentral() }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-data-mongodb',
-            'org.springframework.boot:spring-boot-starter-data-rest',
-            'org.springframework.boot:spring-boot-starter-actuator',
-            'org.springframework.boot:spring-boot-devtools',
-            'org.projectlombok:lombok'
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
+  compile 'org.springframework.boot:spring-boot-starter-data-mongodb',
+      'org.springframework.boot:spring-boot-starter-data-rest',
+      'org.springframework.boot:spring-boot-starter-actuator',
+      'org.springframework.boot:spring-boot-devtools',
+      'org.projectlombok:lombok'
+  testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
 apply from: "$rootDir/client/build.gradle"

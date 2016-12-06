@@ -1,5 +1,5 @@
 {
-  "name": "angularjs-es6-webpack-spring-boot",
+  "name": "angularjs-breeze-boot",
   "version": "0.0.1",
   "description": "An example of application, using: AngularJS 1.5, Webpack, ES6, Spring Boot",
   "main": "index.js",
