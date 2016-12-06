@@ -1,6 +1,6 @@
 package daggerok.config;
 
-import daggerok.data.user.User;
+import daggerok.domain.user.User;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;

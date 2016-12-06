@@ -1,0 +1,17 @@
+<main>
+  <div>
+    <h3>controller name: {{$ctrl.name}}</h3>
+    <ul>
+      <li>Angular 1.5</li>
+      <li>UI Router</li>
+      <li>Webpack</li>
+      <li>ES 6 / Babel</li>
+    </ul>
+  </div>
+
+  <button ng-click="$ctrl.getUsers()" class="btn btn-default">get users</button>
+
+  <ul ng-repeat="user in $ctrl.users">
+    <li id="user-{{user.id}}">{{user.username}}</li>
+  </ul>
+</main>

@@ -1,0 +1,23 @@
+#https://github.com/mongo-express/mongo-express-docker
+angularjs-breeze-boot-mongo-express:
+  container_name: angularjs-breeze-boot-mongo-express
+  hostname: angularjs-breeze-boot-mongo-express
+  image: mongo-express:0.32.0
+  ports:
+    - "8081:8081"
+  links:
+    - angularjs-breeze-boot-mongo
+  environment:
+    ME_CONFIG_MONGODB_SERVER: angularjs-breeze-boot-mongo
+    ME_CONFIG_OPTIONS_EDITORTHEME: ambiance
+    ME_CONFIG_SITE_BASEURL: /
+
+angularjs-breeze-boot-mongo:
+  container_name: angularjs-breeze-boot-mongo
+  hostname: angularjs-breeze-boot-mongo
+  image: mongo:3.0.14
+  environment:
+    MONGO_PORT_27017_TCP_ADDR: angularjs-breeze-boot-mongo
+    MONGO_PORT_27017_TCP_PORT: 27017
+  ports:
+    - "27017:27017"

@@ -1,44 +1,36 @@
 buildscript {
-	ext {
-		springBootVersion = '1.4.1.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    repositories { mavenCentral() }
+    dependencies { classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE' }
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'spring-boot'
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+}
+
+apply plugin: 'org.springframework.boot'
+
 
 jar {
-	baseName = 'ng-boot'
-	version = '0.0.1-SNAPSHOT'
+    baseName = 'ng-boot'
+    version = '0.0.1-SNAPSHOT'
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 
-repositories {
-	mavenCentral()
-}
+repositories { mavenCentral() }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-	compile('org.springframework.boot:spring-boot-starter-data-rest')
-	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
-	compile('org.springframework.boot:spring-boot-devtools')
-	compile('org.projectlombok:lombok')
-	compile('org.springframework.boot:spring-boot-starter-mustache')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile 'org.springframework.boot:spring-boot-starter-data-mongodb',
+            'org.springframework.boot:spring-boot-starter-data-rest',
+            'org.springframework.boot:spring-boot-starter-actuator',
+            'org.springframework.boot:spring-boot-devtools',
+            'org.projectlombok:lombok'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
-apply from: "$rootDir/gradle/client.gradle"
+apply from: "$rootDir/client/build.gradle"
 
 build.dependsOn 'npm run build'
 build.shouldRunAfter 'npm run build'

@@ -1,8 +1,21 @@
 sudo: required
 dist: trusty
+language: java
+jdk: oraclejdk8
 install: true
+env:
+  SPRING_PROFILES_ACTIVE: default
+  DOCKER_COMPOSE_VERSION: 1.9.0
 before_install:
-  - nvm install 6
+  - sudo rm /usr/local/bin/docker-compose
+  - export DOCKER_COPOSE_URL=https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m`
+  - echo using\ $DOCKER_COPOSE_URL
+  - curl -L $DOCKER_COPOSE_URL > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+  - nvm install 7
+
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
@@ -10,13 +23,11 @@ before_install:
   - sudo apt-get install -y libappindicator1 fonts-liberation
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
-language: java
-jdk: oraclejdk8
-env:
-  - SPRING_PROFILES_ACTIVE=dev
-script: ./gradlew build
+before_script: docker-compose up -d
+script: gradle build
+after_script: docker-compose down
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -rf $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache.directories:
   - $HOME/.m2/

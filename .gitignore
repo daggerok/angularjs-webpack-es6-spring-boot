@@ -1,24 +1,21 @@
-.gradle
-node_modules/
-src/main/resources/static
+gradlew*
+**/build/
+**/dist/
+**/gradle/
+**/.gradle/
+**/node_modules/
+**/npm-debug.log
+/src/main/resources/static
 
 ### STS ###
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
+/.classpath
+/.factorypath
+/.project
+/.settings
+/.springBeans
 
 ### IntelliJ IDEA ###
-.idea
+**/.idea/
 *.iws
 *.iml
 *.ipr
-
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/

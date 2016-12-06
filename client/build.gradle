@@ -1,0 +1,13 @@
+final File workDir = new File("$rootDir/client")
+
+task 'npm install'(type: Exec) {
+  workingDir workDir
+  executable 'bash'
+  args '-c', 'npm install'
+}
+
+task 'npm run build'(type: Exec, dependsOn: ['npm install']) {
+  workingDir workDir
+  executable 'bash'
+  args '-c', 'npm run build'
+}

@@ -1,0 +1,9 @@
+server.compression:
+  enabled: true
+  mime-types:
+    - application/javascript
+    - application/json
+    - text/plain
+    - text/html
+    - text/xml
+    - text/css

@@ -1,0 +1,3 @@
+spring:
+  application.name: ng15app
+  profiles.include: 'compression,data-rest'
