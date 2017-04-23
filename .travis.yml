@@ -1,14 +1,14 @@
-sudo: required
+group: edge
 dist: trusty
 language: java
 jdk: oraclejdk8
 install: true
 env:
   SPRING_PROFILES_ACTIVE: default
-  DOCKER_COMPOSE_VERSION: 1.9.0
+  DOCKER_COMPOSE_VERSION: 1.12.0
 before_install:
   - sudo rm /usr/local/bin/docker-compose
-  - export DOCKER_COPOSE_URL=https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m`
+  - export DOCKER_COPOSE_URL=https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)
   - echo using\ $DOCKER_COPOSE_URL
   - curl -L $DOCKER_COPOSE_URL > docker-compose
   - chmod +x docker-compose
@@ -29,7 +29,8 @@ after_script: docker-compose down
 before_cache:
   - rm -rf $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-cache.directories:
-  - $HOME/.m2/
-  - $HOME/.gradle/caches/
-  - $HOME/.gradle/wrapper/
+cache:
+  directories:
+    - $HOME/.m2/
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
